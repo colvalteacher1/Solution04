@@ -1,0 +1,10 @@
+﻿@using SharedModelsLib;
+@model List<Sport>
+
+@{
+    ViewData["Title"] = "Liste des sports";
+}
+
+<component type="typeof(MyBlazorLib.Components.Pages.SportsComponent)"
+            render-mode="Server"
+            param-Sports="Model" />

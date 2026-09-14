@@ -1,0 +1,46 @@
+﻿@using SharedModelsLib;
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Liste des sports</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nom du sport</th>
+                    <th>Joueurs par équipe</th>
+                    <th>Sport collectif</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var sport in Sports)
+                {
+                    <tr>
+                        <td>@sport.Name</td>
+                        <td>@sport.PlayersPerTeam</td>
+                        <td>
+                            @if (sport.IsTeamSport)
+                            {
+                                <span class="badge bg-success">Oui</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Non</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@code {
+
+    [Parameter]
+    public List<Sport> Sports { get; set; }
+
+    
+}
