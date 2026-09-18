@@ -4,10 +4,11 @@ using System.Text;
 
 namespace SharedModelsLib
 {
-    public class Team
+    public class Player
     {
         public string Name { get; set; }
-
-        public Sport Sport { get; set; }
+        public int Age { get; set; }
+        public string Country { get; set; }
+        public string TeamName { get; set; }
     }
 }

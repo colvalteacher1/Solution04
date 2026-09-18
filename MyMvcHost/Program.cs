@@ -30,6 +30,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseAntiforgery();
+
 app.MapStaticAssets();
 
 app.MapControllerRoute(
