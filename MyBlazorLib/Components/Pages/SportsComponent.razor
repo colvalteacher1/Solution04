@@ -1,4 +1,6 @@
-﻿@using SharedModelsLib;
+﻿@inject NavigationManager NavManager
+
+@using SharedModelsLib;
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">Liste des sports</h2>
@@ -17,7 +19,7 @@
                 @foreach (var sport in Sports)
                 {
                     <tr>
-                        <td>@sport.Name</td>
+                        <td><a href="#" @onclick="() => ClickSport(sport.Name)">@sport.Name</a></td>
                         <td>@sport.PlayersPerTeam</td>
                         <td>
                             @if (sport.IsTeamSport)
@@ -42,5 +44,11 @@
     [Parameter]
     public List<Sport> Sports { get; set; }
 
-    
+    // public string sportName { get; set; }
+
+    public async Task ClickSport(string sportName)
+    {
+        NavManager.NavigateTo($"/home/GetTeams?sportName={sportName}", forceLoad: true);
+    }
+
 }
