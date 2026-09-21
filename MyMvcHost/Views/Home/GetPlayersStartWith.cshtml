@@ -1,5 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using SharedModelsLib;
+@model List<Player>
+
+ <component type="typeof(MyBlazorLib.Components.Pages.GetPlayersStartWithComponent)"
+               render-mode="Server"
+               param-FilteredPlayers="Model" />

@@ -63,9 +63,13 @@ namespace MyMvcHost.Controllers
             return View(filteredTeams);   
         }
 
-        public IActionResult GetPlayersStartWith()
+        public IActionResult GetPlayersStartWith(string startToken = "")
         {
-            return View();
+            List<Player> filteredPlayers = AppDao.GetPlayers()
+                                                    .Where(p => p.Name.ToLower().StartsWith(startToken.ToLower()))
+                                                    .ToList();
+                                                
+            return View(filteredPlayers);
         }
     }
 }
