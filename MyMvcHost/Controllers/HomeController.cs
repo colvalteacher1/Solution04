@@ -43,5 +43,29 @@ namespace MyMvcHost.Controllers
             AppDao.players.Add(player);
             return RedirectToAction("index");
         }
+
+        public IActionResult FilterTeams(int minPlayers = 0)
+        {
+            List<Player> players = AppDao.GetPlayers();
+            Debug.WriteLine("Action exécutée");
+       
+            List<TeamResult> filteredTeams = players
+                .GroupBy(p => p.TeamName)
+                .Select(g => new TeamResult
+                {
+                    Name = g.Key,
+                    PlayerCount = g.Count()
+                })
+                .Where(t => t.PlayerCount >= minPlayers)
+                .OrderByDescending(t => t.PlayerCount)
+                .ToList();
+
+            return View(filteredTeams);   
+        }
+
+        public IActionResult GetPlayersStartWith()
+        {
+            return View();
+        }
     }
-    }
+}
